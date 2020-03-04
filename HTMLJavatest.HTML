@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+    <p>Hello World!</p>
+  <script>
+    // Your JavaScript goes here!
+    function computerPlay() {
+      let computerHand = Math.floor(Math.random() * 3) + 1;
+      result = computerHand;
+      //return result;
+      if (result == 1) {
+        return "Rock";
+      }
+
+      else if (result == 2) {
+        return "Paper";
+      }
+
+      else if (result == 3) {
+        return "Scissors";
+      }
+    }
+    /*
+    //returns the result of one rock, paper, scissors match in the form of a string
+    function playRound(playerSelection,computerSelection) {
+      //og responses saved for later reference
+      ogPlayerSelection = playerSelection
+      ogComputerSelection = computerSelection
+      //lower case prevents casing errors
+      playerSelection = playerSelection.toLowerCase();
+      computerSelection = computerSelection.toLowerCase()
+      if (playerSelection === computerSelection) {
+        return ("The Match Ends In A Tie! "+ "Both Picked: " + ogComputerSelection);
+      }
+      else if ((playerSelection === "rock" && computerSelection === "paper")||
+        (playerSelection === "paper" && computerSelection === "scissors") ||
+        (playerSelection) === "scissors" && computerSelection === "rock") {
+          return ("You Lose! " + ogComputerSelection + "(cpu) Beats " + ogPlayerSelection + "(player).");
+        }
+
+      else if ((playerSelection == "rock" && computerSelection == "scissors")||
+        (playerSelection == "paper" && computerSelection == "rock")||
+        (playerSelection == "scissors" && computerSelection == "paper")) {
+          return ("You Win! " + ogPlayerSelection + "(player) Beats " + ogComputerSelection + "(cpu).");
+        }    
+    }
+    */
+
+    //game function runs five rounds of rock paper scissors and returns the results
+    function game() {
+      function playRound(playerSelection,computerSelection) {
+      ogPlayerSelection = playerSelection
+      ogComputerSelection = computerSelection
+      playerSelection = playerSelection.toLowerCase();
+      computerSelection = computerSelection.toLowerCase()
+      if (playerSelection === computerSelection) {
+        return ("Tie")
+      }
+      else if ((playerSelection === "rock" && computerSelection === "paper")||
+        (playerSelection === "paper" && computerSelection === "scissors") ||
+        (playerSelection) === "scissors" && computerSelection === "rock") {
+          return ("Loss");
+        }
+
+      else if ((playerSelection == "rock" && computerSelection == "scissors")||
+        (playerSelection == "paper" && computerSelection == "rock")||
+        (playerSelection == "scissors" && computerSelection == "paper")) {
+          return ("Win");
+        }    
+      }
+
+
+    let playerScore = 0
+    let computerScore = 0
+    let currentRound = 1
+    let gameLog = ""
+
+    while (currentRound < 6) {
+      playerLog = prompt("[Round " + (currentRound) + "] Rock, Paper, or Scissors?")
+      computerLog = computerPlay();
+      
+
+      let result = playRound(playerLog, computerLog);
+      gameLog = gameLog + "Round " + currentRound + ": " + playerLog + " vs " + computerLog + ": " + result + " ";
+      if (result == "Win") {
+        playerScore++
+        currentRound++
+      }
+
+      else if (result == "Loss") {
+        computerScore++
+        currentRound++
+      }
+
+      else if (result == "Tie") {
+        currentRound++
+      }
+
+    }
+
+    if (playerScore == computerScore) {
+      return gameLog + "After 5 games, both players scored " + playerScore.toString() + " and so the game is a Tie.";
+    }
+
+    else if (playerScore > computerScore) {
+      return gameLog + "After 5 games, player scored: " + playerScore.toString() + " and computer scored: " + computerScore.toString() +". The Player Wins!"
+    }
+
+    else if (computerScore > playerScore) {
+      return gameLog + "After 5 games, player scored: " + playerScore.toString() + " and computer scored: " + computerScore.toString() +". The Computer Wins!"
+    }
+
+
+
+
+    }
+    console.log(alert(game()))
+  </script> 
+</body>
+</html>
